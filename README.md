@@ -72,7 +72,3 @@ Contributions are welcome! Feel free to open an issue or submit a pull request. 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/mit/) file for details.
-
-## Keywords
-
-[number](https://www.npmjs.com/search?q=keywords:number) [convert](https://www.npmjs.com/search?q=keywords:convert) [text](https://www.npmjs.com/search?q=keywords:text) [transform](https://www.npmjs.com/search?q=keywords:transform)
