@@ -22,7 +22,6 @@ Here are some of the main features offered by helper-kit
 
 This feature allows you to receive a number in compression and return it in extension.
 
-<pre>
 ```javascript
 import { numberToText } from 'helper-kit';
 
@@ -30,8 +29,6 @@ const numberText = numberToText(404);
 
 console.log(numberText) // quatrocentos e quatro :-)
 ```
-</pre>
-
 ### abbreviateName
 
 This feature allows you to receive a name and return the name with abbreviated middle names.
