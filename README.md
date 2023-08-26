@@ -1,15 +1,15 @@
-# HELPER KIT
+# KIT HELPER
 
 This package contains several useful features in the day-to-day of the dev.
 
 ## Installation
 
-npm install helper-kit
+npm install kit-helper
 
 ## Usage
 
 ```typescript
-import { numberToText } from 'helper-kit';
+import { numberToText } from 'kit-helper';
 
 const numberText = numberToText(2023);
 
@@ -18,14 +18,14 @@ console.log(numberText) // dois mil e vinte e três
 
 ## Features
 
-Here are some of the main features offered by helper-kit
+Here are some of the main features offered by kit-helper
 
 ### numberToText
 
 This feature allows you to receive a number in compression and return it in extension.
 
 ```typescript
-import { numberToText } from 'helper-kit';
+import { numberToText } from 'kit-helper';
 
 const numberText = numberToText(404);
 
@@ -37,7 +37,7 @@ This feature allows you to receive a name and return the name with abbreviated m
 
 
 ```typescript
-import { abbreviateName } from 'helper-kit';
+import { abbreviateName } from 'kit-helper';
 
 const nameAbbreviate = abbreviateName("Élvio Sadoc da Silva e Sousa");
 
@@ -50,7 +50,7 @@ This functionality receives as a parameter a real number, a mantissa and optiona
 indicates the need for rounding or not and returns the fractional part of the number.
 
 ```typescript
-import { extractPartDecimal } from 'helper-kit';
+import { extractPartDecimal } from 'kit-helper';
 
 let decimalPart = extractPartDecimal(3.145, 2, true); // The true indicates that we want to round
 
@@ -63,7 +63,7 @@ console.log(decimalPart) // 14
 
 ## Contributing
 
-Contributions are welcome! Feel free to open an issue or submit a pull request. [github](https://github.com/ManuelismoXp/helper-kit)
+Contributions are welcome! Feel free to open an issue or submit a pull request. [github](https://github.com/ManuelismoXp/kit-helper)
 
 
 ## License
