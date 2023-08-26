@@ -8,11 +8,13 @@ npm install helper-kit
 
 ## Usage
 
+```typescript
 import { numberToText } from 'helper-kit';
 
 const numberText = numberToText(2023);
 
 console.log(numberText) // dois mil e vinte e três
+```
 
 ## Features
 
