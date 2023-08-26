@@ -1,16 +1,16 @@
 {
   "name": "kit-helper",
   "version": "1.0.0",
-  "description": "",
+  "description": "This package contains several useful features in the day-to-day of the dev.",
+  "keywords":["number", "convert", "text", "transform"],
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --declaration",
     "dev": "nodemon --watch \"src//\" --exec \"ts-node src/index.ts\" -e ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Lukau Garcia",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.6",
     "nodemon": "^3.0.1",
