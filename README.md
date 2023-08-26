@@ -61,6 +61,11 @@ decimalPart = extractPartDecimal(3.145, 2); // In the absence of the third param
 console.log(decimalPart) // 14
 ```
 
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request. [github](https://github.com/ManuelismoXp/helper-kit)
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](https://opensource.org/license/mit/) file for details.
