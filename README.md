@@ -4,7 +4,10 @@ This package contains several useful features in the day-to-day of the dev.
 
 ## Installation
 
+```bash
 npm install kit-helper
+```
+
 
 ## Usage
 
