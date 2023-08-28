@@ -7,12 +7,14 @@ export const numberToText = (num: number): string => {
         return nums.digits[0];
     }
 
-    text = millions(num, nums);
-    text = text.startsWith(" e ") ? text.replace(" e ", "") : text
+    const floatNumber: Array<string> = checkFloatNumber(num);
+
+    text = floatNumber.length > 1 ? millions(Number(floatNumber[0]), nums) + ' vírgula ' + millions(Number(floatNumber[1]), nums) : millions(Number(floatNumber[0]), nums);
+    text = removeEOnStartAndAfterComma(text);
 
     return text;
 
-}
+};
 
 const numbers = (): Object => {
     return {
@@ -23,7 +25,7 @@ const numbers = (): Object => {
         thousand: ['mil'],
         millions: ['milhão', 'milhões']
     }
-}
+};
 
 const millions = (num: number, nums: any): string => {
     let millionText: string = "";
@@ -42,7 +44,7 @@ const millions = (num: number, nums: any): string => {
     millionText += thousands(rest_million, nums);
 
     return millionText;
-}
+};
 
 const thousands = (rest_million: number, nums: any): any => {
     let thousandText: string = "";
@@ -61,7 +63,7 @@ const thousands = (rest_million: number, nums: any): any => {
     thousandText += hundreds(rest_thousand, nums);
 
     return thousandText;
-}
+};
 
 const hundreds = (rest_thousand: number, nums: any): any => {
     let hundredText: string = "";
@@ -72,17 +74,21 @@ const hundreds = (rest_thousand: number, nums: any): any => {
         const rest_hundred = rest_thousand % 100;
 
         if (hundred > 0) {
-            if (rest_hundred > 1)
+            if (hundred > 1)
                 hundredText += " " + nums.hundreds[hundred];
-            else
-                hundredText += " e " + nums.hundreds[0];
+            else {
+                if (rest_hundred > 0)
+                    hundredText += " " + nums.hundreds[hundred];
+                else
+                    hundredText += " e " + nums.hundreds[0];
+            }
         }
 
         hundredText += dozens(rest_hundred, nums);
     }
 
     return hundredText;
-}
+};
 
 const dozens = (rest_hundred: number, nums: any): string => {
     let dozenText: string = "";
@@ -104,7 +110,7 @@ const dozens = (rest_hundred: number, nums: any): string => {
     }
 
     return dozenText;
-}
+};
 
 const digits = (digit: number, nums: any): string => {
     let digitText: string = "";
@@ -114,4 +120,16 @@ const digits = (digit: number, nums: any): string => {
     }
 
     return digitText
+};
+
+const checkFloatNumber = (num: number): Array<string> => {
+    const numString = num.toString();
+    if (numString.includes('.')) return numString.split('.');
+    return [numString]
+}
+
+const removeEOnStartAndAfterComma = (text: string): string => {
+    if (text.startsWith(" e ")) text = text.replace(" e ", "");
+    text = text.replace(" vírgula e ", " vírgula ").replace(" vírgula  e ", " vírgula ");
+    return text;
 }

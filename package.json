@@ -1,6 +1,6 @@
 {
   "name": "kit-helper",
-  "version": "1.0.1",
+  "version": "0.0.5",
   "description": "This package contains several useful features in the day-to-day of the dev.",
   "keywords":["number", "convert", "text", "transform"],
   "main": "dist/index.js",

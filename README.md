@@ -8,7 +8,6 @@ This package contains several useful features in the day-to-day of the dev.
 npm install kit-helper
 ```
 
-
 ## Usage
 
 ```typescript
