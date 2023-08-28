@@ -29,9 +29,13 @@ This feature allows you to receive a number in compression and return it in exte
 ```typescript
 import { numberToText } from 'kit-helper';
 
-const numberText = numberToText(404);
+let numberText = numberToText(404);
 
-console.log(numberText) // quatrocentos e quatro :-)
+console.log(numberText) // quatrocentos e quatro
+
+numberText = numberToText(3.14);
+
+console.log(numberText) // três vírgula catorze
 ```
 ### abbreviateName
 
