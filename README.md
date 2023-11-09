@@ -11,9 +11,9 @@ npm install kit-helper
 ## Usage
 
 ```typescript
-import { numberToText } from 'kit-helper';
+import { number } from 'kit-helper';
 
-const numberText = numberToText(2023);
+const numberText = number.numberToText(2023);
 
 console.log(numberText) // dois mil e vinte e três
 ```
@@ -27,13 +27,13 @@ Here are some of the main features offered by kit-helper
 This feature allows you to receive a number in compression and return it in extension.
 
 ```typescript
-import { numberToText } from 'kit-helper';
+import { number } from 'kit-helper';
 
-let numberText = numberToText(404);
+let numberText = number.numberToText(404);
 
 console.log(numberText) // quatrocentos e quatro
 
-numberText = numberToText(3.14);
+numberText = number.numberToText(3.14);
 
 console.log(numberText) // três vírgula catorze
 ```
@@ -43,9 +43,9 @@ This feature allows you to receive a name and return the name with abbreviated m
 
 
 ```typescript
-import { abbreviateName } from 'kit-helper';
+import { string } from 'kit-helper';
 
-const nameAbbreviate = abbreviateName("Élvio Sadoc da Silva e Sousa");
+const nameAbbreviate = string.abbreviateName("Élvio Sadoc da Silva e Sousa");
 
 console.log(nameAbbreviate) // Élvio S. da S. e Sousa
 ```
@@ -56,16 +56,65 @@ This functionality receives as a parameter a real number, a mantissa and optiona
 indicates the need for rounding or not and returns the fractional part of the number.
 
 ```typescript
-import { extractPartDecimal } from 'kit-helper';
+import { number } from 'kit-helper';
 
-let decimalPart = extractPartDecimal(3.145, 2, true); // The true indicates that we want to round
+let decimalPart = number.extractPartDecimal(3.145, 2, true); // The true indicates that we want to round
 
 console.log(decimalPart) // 15
 
-decimalPart = extractPartDecimal(3.145, 2); // In the absence of the third parameter, it is understood that you do not want to round
+decimalPart = number.extractPartDecimal(3.145, 2); // In the absence of the third parameter, it is understood that you do not want to round
 
 console.log(decimalPart) // 14
 ```
+
+### isArrayEmpty
+
+This function takes an array as a parameter and returns true if it is empty and false if it has elements.
+
+```typescript
+import { array } from 'kit-helper';
+
+let isEmpty = array.isArrayEmpty([]);
+
+console.log(isEmpty) // true
+
+isEmpty = array.isArrayEmpty([1,2]);
+
+console.log(isEmpty) // false
+```
+
+### min
+
+This function takes an array of numbers as a parameter and returns the smallest number in the array.
+
+```typescript
+import { array } from 'kit-helper';
+
+let min = array.min([]);
+
+console.log(min) // The array must not be empty
+
+min = array.min([1,2,3,4]);
+
+console.log(min) // 1
+```
+
+### max
+
+This function takes an array of numbers as a parameter and returns the largest number in the array.
+
+```typescript
+import { array } from 'kit-helper';
+
+let max = array.max([]);
+
+console.log(max) // The array must not be empty
+
+max = array.max([1,2,3,4]);
+
+console.log(max) // 4
+```
+
 
 ## Contributing
 
