@@ -16,6 +16,12 @@ export const numberToText = (num: number): string => {
 
 };
 
+export const extractPartDecimal = (num: number, decimalPlaces: number, rounded?: boolean): number => {
+    const factor = Math.pow(10, decimalPlaces);
+    const decimalPart = rounded ?? false ? Math.round((num - Math.floor(num)) * factor) : Math.trunc((num - Math.floor(num)) * factor);
+    return decimalPart;
+}
+
 const numbers = (): Object => {
     return {
         digits: ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'],
