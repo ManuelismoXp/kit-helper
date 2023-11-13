@@ -15,7 +15,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc --declaration",
-    "dev": "nodemon --watch \"src//\" --exec \"ts-node src/server.ts\" -e ts"
+    "dev": "nodemon --watch \"src//\" --exec \"ts-node src/teste.ts\" -e ts"
   },
   "author": "Lukau Garcia",
   "license": "MIT",
