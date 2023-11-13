@@ -1,7 +1,9 @@
-export const numberToText = (num: number): string => {
+import { numbers } from "./helpers/numbers";
+
+export const numberToText = (num: number, language: string = 'pt'): string => {
 
     let text: string = "";
-    const nums: any = numbers();
+    const nums: any = numbers(language);
 
     if (num === 0) {
         return nums.digits[0];
@@ -9,8 +11,8 @@ export const numberToText = (num: number): string => {
 
     const floatNumber: Array<string> = checkFloatNumber(num);
 
-    text = floatNumber.length > 1 ? millions(Number(floatNumber[0]), nums) + ' vírgula ' + millions(Number(floatNumber[1]), nums) : millions(Number(floatNumber[0]), nums);
-    text = removeEOnStartAndAfterComma(text);
+    text = floatNumber.length > 1 ? millions(Number(floatNumber[0]), nums, language) + nums.separator + millions(Number(floatNumber[1]), nums, language) : millions(Number(floatNumber[0]), nums, language);
+    text = removeEOnStartAndAfterComma(text, nums);
 
     return text;
 
@@ -22,18 +24,7 @@ export const extractPartDecimal = (num: number, decimalPlaces: number, rounded?:
     return decimalPart;
 }
 
-const numbers = (): Object => {
-    return {
-        digits: ['zero', 'um', 'dois', 'três', 'quatro', 'cinco', 'seis', 'sete', 'oito', 'nove'],
-        differents: ['dez', 'onze', 'doze', 'treze', 'catorze', 'quinze', 'dezesseis', 'dezessete', 'dezoito', 'dezenove'],
-        dozens: ['vinte', 'trinta', 'quarenta', 'cinquenta', 'sessenta', 'setenta', 'oitenta', 'noventa'],
-        hundreds: ['cem', 'cento', 'duzentos', 'trezentos', 'quatrocentos', 'quinhentos', 'seiscentos', 'setecentos', 'oitocentos', 'novecentos'],
-        thousand: ['mil'],
-        millions: ['milhão', 'milhões']
-    }
-};
-
-const millions = (num: number, nums: any): string => {
+const millions = (num: number, nums: any, language: string): string => {
     let millionText: string = "";
 
     const million = Math.floor(num / 1000000);
@@ -43,16 +34,16 @@ const millions = (num: number, nums: any): string => {
         if (million === 1) {
             millionText += nums.digits[1] + " " + nums.millions[0];
         } else {
-            millionText += numberToText(million) + " " + nums.millions[1];
+            millionText += numberToText(million, language) + " " + nums.millions[1];
         }
     }
 
-    millionText += thousands(rest_million, nums);
+    millionText += thousands(rest_million, nums, language);
 
     return millionText;
 };
 
-const thousands = (rest_million: number, nums: any): any => {
+const thousands = (rest_million: number, nums: any, language: string): any => {
     let thousandText: string = "";
 
     const thousand = Math.floor(rest_million / 1000);
@@ -62,7 +53,7 @@ const thousands = (rest_million: number, nums: any): any => {
         if (thousand === 1) {
             thousandText += " " + nums.thousand[0];
         } else {
-            thousandText += " " + numberToText(thousand) + " " + nums.thousand[0];
+            thousandText += " " + numberToText(thousand, language) + " " + nums.thousand[0];
         }
     }
 
@@ -74,7 +65,7 @@ const thousands = (rest_million: number, nums: any): any => {
 const hundreds = (rest_thousand: number, nums: any): any => {
     let hundredText: string = "";
 
-    if (rest_thousand > 0) {
+    if (rest_thousand >= 0) {
 
         const hundred = Math.floor(rest_thousand / 100);
         const rest_hundred = rest_thousand % 100;
@@ -86,7 +77,7 @@ const hundreds = (rest_thousand: number, nums: any): any => {
                 if (rest_hundred > 0)
                     hundredText += " " + nums.hundreds[hundred];
                 else
-                    hundredText += " e " + nums.hundreds[0];
+                    hundredText += nums.connector + nums.hundreds[0];
             }
         }
 
@@ -99,17 +90,17 @@ const hundreds = (rest_thousand: number, nums: any): any => {
 const dozens = (rest_hundred: number, nums: any): string => {
     let dozenText: string = "";
 
-    if (rest_hundred > 0) {
+    if (rest_hundred >= 0) {
 
         if (rest_hundred < 10) {
-            dozenText += " e " + nums.digits[rest_hundred];
+            dozenText += nums.connector + nums.digits[rest_hundred];
         } else if (rest_hundred < 20) {
-            dozenText += " e " + nums.differents[rest_hundred - 10];
+            dozenText += nums.connector + nums.differents[rest_hundred - 10];
         } else {
             const dozen = Math.floor(rest_hundred / 10);
             const digit = rest_hundred % 10;
 
-            dozenText += " e " + nums.dozens[dozen - 2];
+            dozenText += nums.connector + nums.dozens[dozen - 2];
 
             dozenText += digits(digit, nums);
         }
@@ -122,7 +113,7 @@ const digits = (digit: number, nums: any): string => {
     let digitText: string = "";
 
     if (digit > 0) {
-        digitText += " e " + nums.digits[digit];
+        digitText += nums.connector + nums.digits[digit];
     }
 
     return digitText
@@ -134,8 +125,9 @@ const checkFloatNumber = (num: number): Array<string> => {
     return [numString]
 }
 
-const removeEOnStartAndAfterComma = (text: string): string => {
+const removeEOnStartAndAfterComma = (text: string, nums: any): string => {
     if (text.startsWith(" e ")) text = text.replace(" e ", "");
-    text = text.replace(" vírgula e ", " vírgula ").replace(" vírgula  e ", " vírgula ");
+    text = text.replace(nums.separator + nums.connector, nums.separator + " ")
+        .replace(nums.separator + nums.connector, nums.separator + " ");
     return text;
 }
