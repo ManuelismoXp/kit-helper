@@ -17,13 +17,10 @@ const isArrayEmpty = (a: Array<any>): boolean => {
     return empty;
 }
 
-const mixArray = (a: Array<any>, b: Array<any>): Array<any> => {
-    console.log('A: ', typeof(a), "B: ", typeof(b));
-    if(typeof(a) === typeof(b)){
-        return ['Text'];
-    }
-
-    return ['Não'];
+const mergerArrays = (arr1: Array<any>, arr2: Array<any>) => {
+       if(isArrayEmpty(arr1) || isArrayEmpty(arr2)) return "Both Array cannot be empty"
+       return Array.from(new Set([...arr1, ...arr2]))
 }
 
-export { isArrayEmpty, max, min, mixArray };
+export { isArrayEmpty, max, mergerArrays, min };
+

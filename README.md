@@ -115,6 +115,19 @@ max = array.max([1,2,3,4]);
 console.log(max) // 4
 ```
 
+### mergerArray
+
+This function is used to merge two arrays without repeating elements.
+
+```typescript
+import { mergerArrays } from 'kit-helper';
+
+console.log(mergerArrays([1,2,3], [6,2,5])); // [ 1, 2, 3, 6, 5 ]
+
+console.log(mergerArrays([1,2,3], [4, 5, 6])); // [ 1, 2, 3, 4, 5, 6 ]
+
+```
+
 
 ## Contributing
 
