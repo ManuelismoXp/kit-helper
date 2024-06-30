@@ -16,5 +16,10 @@ const isArrayEmpty = (arr: Array<any>): boolean => {
     const empty: boolean = arr.length > 0 ? false : true;
     return empty;
 }
+const mergerArrays = (arr1: Array<any>, arr2: Array<any>) => {
+       if(isArrayEmpty(arr1) || isArrayEmpty(arr2)) return "Both Array cannot be empty"
+       return Array.from(new Set([...arr1, ...arr2]))
 
-export { min, max, isArrayEmpty }
+}
+
+export { min, max, isArrayEmpty, mergerArrays }
