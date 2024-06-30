@@ -1,3 +1,3 @@
-import { numberToText } from './number';
+import { mixArray } from './array';
 
-console.log(numberToText(2042, 'pt'));
+console.log(mixArray(["Text"], [2]));

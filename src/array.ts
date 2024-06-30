@@ -1,20 +1,29 @@
-const min = (arr: Array<number>): number | string => {
-    if (isArrayEmpty(arr)) return 'The array must not be empty';
+const min = (a: Array<number>): number | string => {
+    if (isArrayEmpty(a)) return 'The array must not be empty';
 
-    arr.sort((a: number, b: number) => (a - b));
-    return arr[0];
+    a.sort((a: number, b: number) => (a - b));
+    return a[0];
 }
 
-const max = (arr: Array<number>): number | string => {
-    if (isArrayEmpty(arr)) return 'The Array must not be empty';
+const max = (a: Array<number>): number | string => {
+    if (isArrayEmpty(a)) return 'The Array must not be empty';
 
-    arr.sort((a: number, b: number) => (b - a));
-    return arr[0];
+    a.sort((a: number, b: number) => (b - a));
+    return a[0];
 }
 
-const isArrayEmpty = (arr: Array<any>): boolean => {
-    const empty: boolean = arr.length > 0 ? false : true;
+const isArrayEmpty = (a: Array<any>): boolean => {
+    const empty: boolean = a.length > 0 ? false : true;
     return empty;
 }
 
-export { min, max, isArrayEmpty }
+const mixArray = (a: Array<any>, b: Array<any>): Array<any> => {
+    console.log('A: ', typeof(a), "B: ", typeof(b));
+    if(typeof(a) === typeof(b)){
+        return ['Text'];
+    }
+
+    return ['Não'];
+}
+
+export { isArrayEmpty, max, min, mixArray };

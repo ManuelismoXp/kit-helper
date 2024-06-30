@@ -10,20 +10,10 @@ const numbers = (language: string): Object => {
             millions: ['milhão', 'milhões'],
             connector: " e ",
             separator: " vírgula"
-        },
-        en: {
-            digits: ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'],
-            differents: ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'],
-            dozens: ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'],
-            hundreds: ['hundred', 'hundred', 'two hundred', 'three hundred', 'four hundred', 'five hundred', 'six hundred', 'seven hundred', 'eight hundred', 'nine hundred'],
-            thousand: ['thousand'],
-            millions: ['million', 'millions'],
-            connector: " ",
-            separator: " point"
         }
     };
 
     return dictionary[language] || dictionary.pt;
 };
 
-export { numbers }
+export { numbers };
